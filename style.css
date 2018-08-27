@@ -885,4 +885,14 @@ html, body {
     .header-s::before {
         display: none;
     }
+
+    .info-desc {
+        border: 0;
+        padding: 0;
+    }
+
+    .footer-header {
+        border-bottom: 1px solid #009889;
+        padding-bottom: 20px;
+    }
 }

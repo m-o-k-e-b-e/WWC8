@@ -876,4 +876,13 @@ html, body {
         width: 100%;
         margin: 0;
     }
+
+    .name {
+        font-size: 30px;
+    }
+
+    .header-s::after,
+    .header-s::before {
+        display: none;
+    }
 }

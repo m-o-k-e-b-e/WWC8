@@ -46,7 +46,7 @@ html, body {
 }
 
 .social-icons {
-    display: flex;;
+    display: flex;
     margin-right: 25px;
 }
 
@@ -71,9 +71,9 @@ html, body {
     visibility: hidden;
     transform: translateX(50px);
     transition: .8s;
-    margin-right: 20px;
     text-align: center;
     min-width: 50%;
+    margin-right: 20px;
     margin-left: 10px;
 }
 

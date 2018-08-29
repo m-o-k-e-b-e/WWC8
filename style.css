@@ -377,6 +377,7 @@ html, body {
 
 .frame {
     display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     flex-direction: column;

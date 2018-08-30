@@ -3,8 +3,8 @@
 const hamburger = document.querySelector('.hamburger');
 const menu = document.querySelector('.menu');
 
-hamburger.addEventListener('click', function(){
-    this.classList.toggle('is-active');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('is-active');
     menu.classList.toggle('is-active');
 });
 
@@ -19,42 +19,41 @@ function setProgress(percent, object) {
     object.style.strokeDashoffset = offset;
 }
 
-const all_circles = document.querySelectorAll('.progress-ring__circle');
+const allCircles = document.querySelectorAll('.progress-ring__circle');
 const percents = [50, 35, 80];
 
-for(let i = 0; i < all_circles.length; i++) {
-    all_circles[i].style.strokeDasharray = `${circumference} ${circumference}`;
-    all_circles[i].style.strokeDashoffset = `${circumference}`;
+for(let i = 0; i < allCircles.length; i++) {
+    allCircles[i].style.strokeDasharray = `${circumference} ${circumference}`;
+    allCircles[i].style.strokeDashoffset = `${circumference}`;
 
-    setProgress(percents[i], all_circles[i]);
+    setProgress(percents[i], allCircles[i]);
 }
 
 // --- gallery ---
 
 const close = document.querySelector('.close');
-      next = document.querySelector('.right-arrow');
-      prev = document.querySelector('.left-arrow');
-      images = document.querySelectorAll('.portfolio-img');
-      modal = document.querySelector('.modal');
-      gallery_img = document.querySelector('.gallery-img');
+const next = document.querySelector('.right-arrow');
+const prev = document.querySelector('.left-arrow');
+const images = document.querySelectorAll('.portfolio-img');
+const modal = document.querySelector('.modal');
+const gallery_img = document.querySelector('.gallery-img');
 let position;
 
 for(let i = 0; i < images.length; i++) {
     images[i].addEventListener('click', function() {
-        modal.style.display = "flex";
+        modal.classList.add('open');
         gallery_img.src = images[i].src;
         position = i;
 });}
 
 close.addEventListener('click', function() {
-    modal.style.display = "none";
-   
+    modal.classList.remove('open');
 });
 
 function checkPosition() {
     if(position < 0) {
         position = images.length - 1;
-    } else if(position > images.length -1) {
+    } else if(position > images.length - 1) {
         position = 0;
     }
 }
@@ -79,7 +78,9 @@ function smoothScroll(anchor) {
     }, 1000);
 }
 
-for(let i = 1; i <= $('.menu-el').length; i++) {
+const menu_el_length = $('.menu-el').length;
+
+for(let i = 1; i <= menu_el_length; i++) {
     $(`.el-${i}`).click(function() {
         smoothScroll(`.anchor-${i}`);
     })
@@ -94,22 +95,15 @@ $('.logo-link').click(function() {
 })
 
 // --- sticky menu ---
+const header = document.querySelector('.page-header');
+const headerHeight = header.offsetHeight;
 
-$(window).scroll(function() {
-    const header = $('.page-header');
-
-    if(pageYOffset > header.height()) {
-        header.addClass('scrolled');
-    } else {
-        header.removeClass('scrolled');
-    }
-})
-
+window.onscroll = () => header.classList.toggle('scrolled', window.pageYOffset > headerHeight);
 
 // --- socials menu ---
 
-socials_menu = document.querySelector('.socials-menu');
-social_icons = document.querySelector('.social-icons');
+const socials_menu = document.querySelector('.socials-menu');
+const social_icons = document.querySelector('.social-icons');
 
 socials_menu.addEventListener('click', function() {
     social_icons.classList.toggle('is-active');
